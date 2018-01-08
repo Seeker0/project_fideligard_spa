@@ -1,14 +1,14 @@
-import { combineReducers } from "redux";
+import { combineReducers } from 'redux';
 
 import {
   GET_STOCKS_REQUEST,
   GET_STOCKS_SUCCESS,
   GET_STOCKS_FAILURE
-} from "./actions";
+} from './actions';
 
 const initialState = {
   user: {
-    name: "User1",
+    name: 'User1',
     portfolio: [],
     transactions: [],
     funds: 100000
@@ -17,7 +17,7 @@ const initialState = {
   isFetching: false
 };
 
-export function stocks(state = initialState, action) {
+function stocks(state = initialState, action) {
   switch (action.type) {
     case GET_STOCKS_REQUEST:
       return { ...state, isFetching: true, error: null };

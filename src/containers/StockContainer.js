@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import React from 'react';
+import React, { Component } from 'react';
 import Components from '../components/ExportComponents';
 import {
   BrowserRouter as Router,
@@ -10,28 +10,20 @@ import {
 
 import { getStocks } from '../actions';
 
-const { Stocks } = Components;
+const { StockTable, Stocks } = Components;
 
 const StockContainer = ({ props }) => {
-  props.stocks.map(stock => {});
-  return;
-  <Stocks />;
+  let { stocks } = props.stocks;
+  let stockTable = stocks.map(stock => {
+    console.log(stock);
+    return;
+    <Stocks stock={stock} />;
+  });
+  return (
+    <div>
+      <StockTable stocks={stocks} />
+    </div>
+  );
 };
-
-const mapStateToProps = state => {
-  return {
-    stocks: state.stocks
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    getStocks: () => {
-      dispatch(getStocks());
-    }
-  };
-};
-
-StockContainer = connect(mapStateToProps, mapDispatchToProps)(StockContainer);
 
 export default StockContainer;
