@@ -20,9 +20,9 @@ import { getStocks } from './actions';
 
 let store = createStore(stocksApp, applyMiddleware(thunk));
 
-let unsubscribe = store.subscribe(() => {
-  console.log(store.getState());
-});
+// let unsubscribe = store.subscribe(() => {
+//   console.log(store.getState());
+// });
 
 store.dispatch(getStocks());
 

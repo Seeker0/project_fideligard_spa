@@ -3,7 +3,8 @@ import { combineReducers } from 'redux';
 import {
   GET_STOCKS_REQUEST,
   GET_STOCKS_SUCCESS,
-  GET_STOCKS_FAILURE
+  GET_STOCKS_FAILURE,
+  NEW_TRANSACTION
 } from './actions';
 
 const initialState = {
@@ -16,6 +17,21 @@ const initialState = {
   stocks: [],
   isFetching: false
 };
+
+function transactions(state = initialState, action) {
+  switch (action.type) {
+    case NEW_TRANSACTION:
+      return {
+        ...state,
+        user: {
+          ...state,
+          transactions: [...state.user.transactions, action.data]
+        }
+      };
+    default:
+      return state;
+  }
+}
 
 function stocks(state = initialState, action) {
   switch (action.type) {
@@ -34,4 +50,4 @@ function stocks(state = initialState, action) {
   }
 }
 
-export const stocksApp = combineReducers({ stocks });
+export const stocksApp = combineReducers({ stocks, transactions });
